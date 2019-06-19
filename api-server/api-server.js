@@ -16,12 +16,12 @@ const { FileSystemWallet, Gateway } = require('fabric-network');
 const fs = require('fs');
 const path = require('path');
 
-const ccpPath = path.resolve(__dirname, '..', '..', 'basic-network', 'connection.json');
+const ccpPath = path.resolve(__dirname, '..', '..', 'fabric-samples/basic-network', 'connection.json');
 const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
 const ccp = JSON.parse(ccpJSON);
 
 // async to recieve callback from function main() in
-app.get('/api/queryallcars', async function (req, res))) {
+app.get('/api/queryallcars', async function (req, res) {
   try {
      // Create a new file system based wallet for managing identities.
      const walletPath = path.join(process.cwd(), 'wallet');
@@ -59,7 +59,7 @@ app.get('/api/queryallcars', async function (req, res))) {
 
 });
 
-app.get('/api/query/:car_index', async function (req, res)) {
+app.get('/api/query/:car_index', async function (req, res) {
   try {
 
      // Create a new file system based wallet for managing identities.
@@ -99,7 +99,7 @@ app.get('/api/query/:car_index', async function (req, res)) {
      }
 });
 
-app.post('/api/addcar/', async function (req, res)) {
+app.post('/api/addcar/', async function (req, res) {
   try {
        // Create a new file system based wallet for managing identities.
        const walletPath = path.join(process.cwd(), 'wallet');
@@ -146,7 +146,7 @@ app.post('/api/addcar/', async function (req, res)) {
        }
 });
 
-app.put('/api/changeowner/:car_index', aysnc function (req, res)) {
+app.put('/api/changeowner/:car_index', async function (req, res) {
   try {
 
       // Create a new file system based wallet for managing identities.
