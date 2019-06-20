@@ -1,0 +1,253 @@
+$ curl -i -H "Accept: application/json+fhir" https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/metadata
+HTTP/1.1 200 OK
+Date: Tue, 05 Jan 2016 20:02:23 GMT
+cache-control: no-cache
+vary: Origin,User-Agent
+strict-transport-security: max-age=631152000
+server-response-time: 6003.4422970000005
+x-xss-protection: 1; mode=block
+x-request-id: 637dd651-6943-4d45-8e8a-0577da7640a2
+x-runtime: 6.003411
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+Status: 200 OK
+Content-Type: application/json+fhir; charset=utf-8
+Transfer-Encoding: chunked
+
+{
+  "resourceType": "Conformance",
+  "text": {
+    "status": "generated",
+    "div": "<div>Generated Conformance Statement</div>"
+  },
+  "url": "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/metadata",
+  "name": "Cerner Conformance Statement",
+  "status": "draft",
+  "publisher": "Cerner",
+  "date": "2015-12-03T00:00:00+00:00",
+  "description": "Describes capabilities of this server",
+  "kind": "instance",
+  "fhirVersion": "1.0.2",
+  "acceptUnknown": "no",
+  "format": [
+    "json"
+  ],
+  "rest": [
+    {
+      "mode": "server",
+      "documentation": "All the functionality defined in FHIR",
+      "security": {
+        "cors": true
+      },
+      "resource": [
+        {
+          "type": "AllergyIntolerance",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "search-type"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "documentation": "A single or comma separated list of AllergyIntolerance ids. It is a required field if patient field is not given"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "documentation": "Who the sensitivity is for. It is a required field if _id field is not given"
+            },
+            {
+              "name": "status",
+              "type": "token",
+              "documentation": "Certainty of the allergy or intolerance"
+            }
+          ]
+        },
+        {
+          "type": "Condition",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "search-type"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "documentation": "A single or comma separated list of Condition ids. It is a required field if patient field is not given"
+            },
+            {
+              "name": "patient",
+              "type": "reference",
+              "documentation": "The patient who has the condition. It is a required field if _id field is not given"
+            },
+            {
+              "name": "clinicalstatus",
+              "type": "token",
+              "documentation": "A list of desired clinical statuses of the condition"
+            },
+            {
+              "name": "category",
+              "type": "token",
+              "documentation": "The category of the condition"
+            }
+          ]
+        },
+        {
+          "type": "Device",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "search-type"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "patient",
+              "type": "reference",
+              "documentation": "The patient who has the device affixed. It is a required field if _id field is not given"
+            },
+            {
+              "name": "_id",
+              "type": "token",
+              "documentation": "A single or comma separated list of Device ids. It is a required field if patient field is not given"
+            }
+          ]
+        },
+        {
+          "type": "DocumentReference",
+          "interaction": [
+            {
+              "code": "search-type"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "patient",
+              "type": "reference",
+              "documentation": "The patient the document is about"
+            },
+            {
+              "name": "type",
+              "type": "token",
+              "documentation": "The type of the document"
+            }
+          ]
+        },
+        {
+          "type": "MedicationOrder",
+          "interaction": [
+            {
+              "code": "search-type"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "patient",
+              "type": "reference",
+              "documentation": "The identity of a patient to list dispenses for. It is a required field"
+            },
+            {
+              "name": "status",
+              "type": "token",
+              "documentation": "The status of the med, may be a list separated by commas. (Active and draft statuses must be queried separately from completed, on-hold, and stopped statuses. The superseded and entered-in-error statuses are not supported). It is a required field"
+            },
+            {
+              "name": "timing-boundsperiod-end",
+              "type": "date",
+              "documentation": "The stop time of the order. Must be prefixed by 'le' (currently only support querying for orders completed prior to a certain time). Not accepted when querying active or draft orders"
+            },
+            {
+              "name": "_count",
+              "type": "number",
+              "documentation": "The number of items to include in a page. Currently ignored if querying for active or draft statuses"
+            }
+          ]
+        },
+        {
+          "type": "MedicationStatement",
+          "interaction": [
+            {
+              "code": "search-type"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "patient",
+              "type": "reference",
+              "documentation": "The identity of a patient to list statements for. It is a required field."
+            },
+            {
+              "name": "status",
+              "type": "token",
+              "documentation": "One or more medication statement status values separated by commas."
+            },
+            {
+              "name": "effectivedate",
+              "type": "date",
+              "documentation": "The date-time which should fall within the period the patient was taking (or not taking) the medication. Must be prefixed by 'ge'."
+            },
+            {
+              "name": "_count",
+              "type": "number",
+              "documentation": "The maximum number of results to include in a page."
+            }
+          ]
+        },
+        {
+          "type": "Patient",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "search-type"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "type": "token",
+              "documentation": "The logical resource id associated with the resource (must be supported by all servers). It is a required field if no birthdate, identifier, name or telecom field is given"
+            },
+            {
+              "name": "birthdate",
+              "type": "date",
+              "documentation": "The patient's date of birth. It is a required field if no _id, identifier, name or telecom field is given"
+            },
+            {
+              "name": "identifier",
+              "type": "token",
+              "documentation": "A patient identifier. It is a requried field if no _id, birthdate, name or telecom field is given"
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "documentation": "A portion of either family or given name of the patient. It is a required field if no _id, birthday, identifier or telecom field is given"
+            },
+            {
+              "name": "telecom",
+              "type": "string",
+              "documentation": "The value in any kind of telecom details of the patient. It is a required field if no _id, birthdate, identifier or name is given"
+            },
+            {
+              "name": "_count",
+              "type": "number",
+              "documentation": "The maximum number of results to return"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
